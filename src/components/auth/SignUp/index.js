@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import '../../../component-css/signup.css';
-
+import {SignInLink}  from '../SignIn/index';
 
 import {withFirebase} from '../../Firebase';
 import * as ROUTES from '../../../constants/routes';
@@ -105,57 +105,166 @@ class SignUpFormBase extends Component {
 
 
         return (
-            <form className="signup-box" onSubmit={this.onSubmit}>
-                <h1>Sign Up</h1>
-                <div className="signup-textbox">
-                    <input name="firstname" value={firstname} onChange={this.onChange} type="text"
-                           placeholder="Enter First Name" style={{color: 'white'}}/>
+            <div className="login_page login-bg">
+                <div className="container">
+                    <div className="row">
+                        <div className=" mt-90 col-lg-8 col-lg-offset-2">
+                            <div className="row">
+                                <div className="login-wrapper crypto">
+                                    <div className="col-lg-6 col-sm-12 over-h hidden-sm no-padding-left  no-padding-right">
+                                        {/*<img src="../../../../images/crypto-dash/login-img.png" style={{width: '105%'}} alt="" />*/}
+                                        <img src={require('../../../images/crypto-dash/login-img.png')} alt=""/>
+                                    </div>
+                                    <div className="col-lg-6 col-sm-12">
+                                        <div id="login" className="login loginpage mt-0 no-pl no-pr pt30 pb30">
+                                            <div className="login-form-header flex align-items-center">
+                                                {/*<img src="../../../../images/crypto-dash/signup.png" alt="login-icon" style={{maxWidth: '64px'}} />*/}
+                                                <img src={require('../../../images/crypto-dash/signup.png')} style={{maxWidth: '64px'}} />
+                                                <div className="login-header">
+                                                    <h4 className="bold">Signup Now!</h4>
+                                                    <h4><small>Enter your data to register.</small></h4>
+                                                </div>
+                                            </div>
+                                            <div className="box login">
+                                                <div className="content-body" style={{paddingTop: '25px'}}>
+                                                    <form className="no-mb no-mt" onSubmit={this.onSubmit} id="msg_validate" action="#" noValidate="novalidate">
+                                                        <div className="row">
+                                                            <div className="col-xs-12">
+                                                                <div className="col-lg-12">
+                                                                    <div className="col-lg-6">
+                                                                        <div className="form-group">
+                                                                            <label className="form-label">First Name</label>
+                                                                            <div className="controls">
+                                                                                <input className="form-control" name="firstname" value={firstname} onChange={this.onChange} type="text" placeholder="Enter First Name" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="col-lg-6">
+                                                                        <div className="form-group">
+                                                                            <label className="form-label">Last Name</label>
+                                                                            <div className="controls">
+                                                                                <input className="form-control" name="lastname" value={lastname} onChange={this.onChange} type="text" placeholder="Enter Last Name" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div className="col-lg-12">
+                                                                    <div className="col-lg-6">
+                                                                        <div className="form-group">
+                                                                            <label className="form-label">Phone</label>
+                                                                            <div className="controls">
+                                                                                <input className="form-control" name="phone" value={phone} onChange={this.onChange} type="text" placeholder="Enter Phone" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="col-lg-6">
+                                                                        <div className="form-group">
+                                                                            <label className="form-label">Sponsor</label>
+                                                                            <div className="controls">
+                                                                                <input className="form-control" name="sponsor" value={sponsor} onChange={this.onChange} type="text" placeholder="Enter Sponsor" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div className="container-fluid form-group">
+                                                                    <label className="form-label">Email</label>
+                                                                    <div className="controls">
+                                                                        <input className="form-control" name="email" value={email} onChange={this.onChange} type="email" placeholder="Email Address" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div className="col-lg-12">
+                                                                    <div className="col-lg-6">
+                                                                        <div className="form-group">
+                                                                            <label className="form-label">Password</label>
+                                                                            <div className="controls">
+                                                                                <input className="form-control" name="passwordOne" value={passwordOne} onChange={this.onChange} type="password" placeholder="Password" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="col-lg-6">
+                                                                        <div className="form-group">
+                                                                            <label className="form-label">Repeat Password</label>
+                                                                            <div className="controls">
+                                                                                <input className="form-control" name="passwordTwo" value={passwordTwo} onChange={this.onChange} type="password" placeholder="Repeat Password" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div className="text-center">
+                                                                    <button disabled={isInvalid} className="btn btn-primary mt-10 btn-corner right-15" type="submit">Sign Up</button>
+                                                                    <button className="btn btn-primary mt-10 btn-corner right-15"><SignInLink/></button>
+                                                                </div>
+                                                                {error && <p>{error.message}</p>}
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div className="signup-textbox">
-                    <input name="lastname" value={lastname} onChange={this.onChange} type="text"
-                           placeholder="Enter Last Name" style={{color: 'white'}}/>
-                </div>
 
-                <div className="signup-textbox">
-                    <input name="phone" value={phone} onChange={this.onChange} type="text"
-                           placeholder="Enter Phone" style={{color: 'white'}}/>
-                </div>
-
-                <div className="signup-textbox">
-                    <input name="sponsor" value={sponsor} onChange={this.onChange} type="text"
-                           placeholder="Enter Sponsor" style={{color: 'white'}}/>
-                </div>
-
-                <div className="signup-textbox">
-                    <input name="email" value={email} onChange={this.onChange} type="text" placeholder="Email Address"
-                           style={{color: 'white'}}/>
-                </div>
-
-                <div className="signup-textbox">
-                    <input name="passwordOne" value={passwordOne} onChange={this.onChange} type="password"
-                           placeholder="Password"/>
-                </div>
-
-                <div className="signup-textbox">
-                    <input name="passwordTwo" value={passwordTwo} onChange={this.onChange} type="password"
-                           placeholder="Confirm Password"/>
-                </div>
-
-                <label>
-                    Admin:
-                    <input
-                        name="isAdmin"
-                        type="checkbox"
-                        checked={isAdmin}
-                        onChange={this.onChangeCheckbox}
-                    />
-                </label>
-
-                <button disabled={isInvalid} className="btn" type="submit">Sign Up</button>
-                {/*<div className="btn"><SignInLink/></div>*/}
-                {error && <p>{error.message}</p>}
-            </form>
+            // <form className="signup-box" onSubmit={this.onSubmit}>
+            //     <h1>Sign Up</h1>
+            //     <div className="signup-textbox">
+            //         <input name="firstname" value={firstname} onChange={this.onChange} type="text"
+            //                placeholder="Enter First Name" style={{color: 'white'}}/>
+            //     </div>
+            //
+            //     <div className="signup-textbox">
+            //         <input name="lastname" value={lastname} onChange={this.onChange} type="text"
+            //                placeholder="Enter Last Name" style={{color: 'white'}}/>
+            //     </div>
+            //
+            //     <div className="signup-textbox">
+            //         <input name="phone" value={phone} onChange={this.onChange} type="text"
+            //                placeholder="Enter Phone" style={{color: 'white'}}/>
+            //     </div>
+            //
+            //     <div className="signup-textbox">
+            //         <input name="sponsor" value={sponsor} onChange={this.onChange} type="text"
+            //                placeholder="Enter Sponsor" style={{color: 'white'}}/>
+            //     </div>
+            //
+            //     <div className="signup-textbox">
+            //         <input name="email" value={email} onChange={this.onChange} type="text" placeholder="Email Address"
+            //                style={{color: 'white'}}/>
+            //     </div>
+            //
+            //     <div className="signup-textbox">
+            //         <input name="passwordOne" value={passwordOne} onChange={this.onChange} type="password"
+            //                placeholder="Password"/>
+            //     </div>
+            //
+            //     <div className="signup-textbox">
+            //         <input name="passwordTwo" value={passwordTwo} onChange={this.onChange} type="password"
+            //                placeholder="Confirm Password"/>
+            //     </div>
+            //
+            //     <label>
+            //         Admin:
+            //         <input
+            //             name="isAdmin"
+            //             type="checkbox"
+            //             checked={isAdmin}
+            //             onChange={this.onChangeCheckbox}
+            //         />
+            //     </label>
+            //
+            //     <button disabled={isInvalid} className="btn" type="submit">Sign Up</button>
+            //     {/*<div className="btn"><SignInLink/></div>*/}
+            //     {error && <p>{error.message}</p>}
+            // </form>
         );
     }
 }
